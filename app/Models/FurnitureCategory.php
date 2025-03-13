@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use App\Traits\WithId;
+use App\Models\Abstracts\AModel;
 use App\Traits\WithTitle;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * @class   FurnitureCategory
  * @package App/Models
  * @method where(string $column, string $operator, string $value)
  */
-class FurnitureCategory extends Model
+class FurnitureCategory extends AModel
 {
-	use HasFactory, WithId, WithTitle;
+	use HasFactory, WithTitle;
 }
