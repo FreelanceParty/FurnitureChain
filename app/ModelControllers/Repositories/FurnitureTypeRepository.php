@@ -19,11 +19,11 @@ class FurnitureTypeRepository
 	 */
 	public function findById(int $id): FurnitureType
 	{
-		$category = FurnitureType::where('id', '=', $id)->first();
-		if ($category === NULL) {
+		$type = FurnitureType::where('id', '=', $id)->first();
+		if ($type === NULL) {
 			throw new FurnitureTypeNotFoundException();
 		}
-		return $category;
+		return $type;
 	}
 
 }

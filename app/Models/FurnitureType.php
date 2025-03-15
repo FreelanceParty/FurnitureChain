@@ -24,11 +24,16 @@ class FurnitureType extends AModel
 		return $this->belongsTo(FurnitureCategory::class);
 	}
 
+	/** @return int */
 	public function getFurnitureCategoryId(): int
 	{
 		return $this->furniture_category_id;
 	}
 
+	/**
+	 * @param int $furnitureCategoryId
+	 * @return void
+	 */
 	public function setFurnitureCategoryId(int $furnitureCategoryId): void
 	{
 		$this->furniture_category_id = $furnitureCategoryId;
