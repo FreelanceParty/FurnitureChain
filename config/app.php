@@ -70,7 +70,7 @@ return [
 	| to any of the locales which will be supported by the application.
 	|
 	*/
-	'locale'          => 'en',
+	'locale'          => 'uk',
 	/*
 	|--------------------------------------------------------------------------
 	| Application Fallback Locale
@@ -92,7 +92,7 @@ return [
 	| localized telephone numbers, street address information and more.
 	|
 	*/
-	'faker_locale'    => 'en_US',
+	'faker_locale'    => 'uk_UA',
 	/*
 	|--------------------------------------------------------------------------
 	| Encryption Key

@@ -2,6 +2,7 @@
 
 use App\ModelControllers\CityController;
 use App\ModelControllers\FurnitureCategoryController;
+use App\ModelControllers\FurnitureController;
 use App\ModelControllers\FurnitureTypeController;
 use App\ModelControllers\StoreController;
 
@@ -10,6 +11,13 @@ if ( ! function_exists('cityController')) {
 	function cityController(): CityController
 	{
 		return app('cityController');
+	}
+}
+if ( ! function_exists('furnitureController')) {
+	/*** @return FurnitureController */
+	function furnitureController(): FurnitureController
+	{
+		return app('furnitureController');
 	}
 }
 if ( ! function_exists('furnitureCategoryController')) {

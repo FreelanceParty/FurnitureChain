@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\ModelControllers\CityController;
 use App\ModelControllers\FurnitureCategoryController;
+use App\ModelControllers\FurnitureController;
 use App\ModelControllers\FurnitureTypeController;
 use App\ModelControllers\StoreController;
 use Illuminate\Support\ServiceProvider;
@@ -19,6 +20,8 @@ class ControllerServiceProvider extends ServiceProvider
 	{
 		$this->app->singleton(CityController::class);
 		$this->app->alias(CityController::class, 'cityController');
+		$this->app->singleton(FurnitureController::class);
+		$this->app->alias(FurnitureController::class, 'furnitureController');
 		$this->app->singleton(FurnitureCategoryController::class);
 		$this->app->alias(FurnitureCategoryController::class, 'furnitureCategoryController');
 		$this->app->singleton(FurnitureTypeController::class);
