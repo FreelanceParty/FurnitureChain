@@ -7,9 +7,19 @@
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.bunny.net">
 	<link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-	<h1 class="bg-blue-300">Test text</h1>
+	<div id="console" class="flex h-screen w-full">
+		@include('side_menu')
+		<div class="flex flex-col w-full">
+			@include('header')
+			<div id="content" class="w-full h-full bg-gray-300 overflow-y-auto flex flex-col gap-6 p-4">
+				@include('content.categories')
+			</div>
+		</div>
+	</div>
 </body>
 </html>
+@include('_scripts.main')

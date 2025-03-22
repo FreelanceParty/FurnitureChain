@@ -41,7 +41,7 @@ class FurnitureController
 	 */
 	public function findByCode(string $code): Furniture
 	{
-		return $this->repo->findById($code);
+		return $this->repo->findByCode($code);
 	}
 
 }

@@ -1,0 +1,87 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Exceptions\FurnitureNotFoundException;
+use App\Models\FurnitureCategory;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Throwable;
+
+/** @class ContentController */
+class ContentController extends Controller
+{
+	/** @return Application|Factory|View|\Illuminate\Foundation\Application|\Illuminate\View\View */
+	public function index()
+	{
+		return view('welcome', [
+			'categories' => FurnitureCategory::all(),
+		]);
+	}
+
+	/**
+	 * @return JsonResponse
+	 * @throws Throwable
+	 */
+	public function getCategoriesContent(): JsonResponse
+	{
+		return response()->json([
+			'html' => view('content.categories', [
+				'categories' => FurnitureCategory::all(),
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws Throwable
+	 */
+	public function getTypesContent(Request $request): JsonResponse
+	{
+		$category = furnitureCategoryController()->findById($request->get('category_id'));
+		return response()->json([
+			'html' => view('content.types', [
+				'category' => $category,
+				'types'    => $category->furniture_types,
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws Throwable
+	 */
+	public function getFurnituresContent(Request $request): JsonResponse
+	{
+		$type = furnitureTypeController()->findById($request->get('type_id'));
+		return response()->json([
+			'html' => view('content.furnitures', [
+				'type'       => $type,
+				'category'   => $type->furniture_category,
+				'furnitures' => $type->furnitures,
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException|Throwable
+	 */
+	public function getFurnitureDetailsContent(Request $request): JsonResponse
+	{
+		$furniture = furnitureController()->findById($request->get('furniture_id'));
+		return response()->json([
+			'html' => view('content.details', [
+				'type'      => $furniture->furniture_type,
+				'category'  => $furniture->furniture_type->furniture_category,
+				'furniture' => $furniture,
+			])->render(),
+		]);
+	}
+}

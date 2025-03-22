@@ -6,9 +6,11 @@ use App\Models\Abstracts\AModel;
 use App\Traits\WithTitle;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @class   FurnitureType
+ * @property HasMany|NULL      $furnitures
  * @property integer           $furniture_category_id
  * @property FurnitureCategory $furniture_category
  * @package App/Models
@@ -17,6 +19,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class FurnitureType extends AModel
 {
 	use HasFactory, WithTitle;
+
+	/** @return HasMany|NULL */
+	public function furnitures(): ?HasMany
+	{
+		return $this->hasMany(Furniture::class, 'furniture_type_id', 'id');
+	}
 
 	/*** @return BelongsTo */
 	public function furniture_category(): BelongsTo

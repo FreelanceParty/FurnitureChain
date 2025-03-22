@@ -27,6 +27,9 @@ class Furniture extends AModel
 {
 	use HasFactory, WithTitle;
 
+	/** @var string */
+	protected $table = 'furnitures';
+
 	/*** @return BelongsTo */
 	public function furniture_type(): BelongsTo
 	{
