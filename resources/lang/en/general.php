@@ -1,14 +1,14 @@
 <?php
 return [
 	'colors'     => [
-		'black' => 'Чорний',
-		'white' => 'Білий',
+		'black' => 'Black',
+		'white' => 'White',
 	],
 	'exceptions' => [
-		'city_not_found'               => 'Місто не знайдено',
-		'furniture_not_found'          => 'Меблі не знайдено',
-		'furniture_category_not_found' => 'Категорію меблів не знайдено',
-		'furniture_type_not_found'     => 'Тип меблів не знайдено',
-		'store_not_found'              => 'Магазин не знайдено',
+		'city_not_found'               => 'City Not Found',
+		'furniture_not_found'          => 'Furniture Not Found',
+		'furniture_category_not_found' => 'Furniture Category Not Found',
+		'furniture_type_not_found'     => 'Furniture Type Not Found',
+		'store_not_found'              => 'Store Not Found',
 	],
 ];

@@ -14,7 +14,7 @@ class Color
 	 * @param string $color
 	 * @return string
 	 */
-	public function getTitleFor(string $color): string
+	public static function getTitleFor(string $color): string
 	{
 		return trans('general.colors.' . $color);
 	}
