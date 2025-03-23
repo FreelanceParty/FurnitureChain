@@ -5,6 +5,7 @@ use App\ModelControllers\FurnitureCategoryController;
 use App\ModelControllers\FurnitureController;
 use App\ModelControllers\FurnitureTypeController;
 use App\ModelControllers\StoreController;
+use App\ModelControllers\UserController;
 
 if ( ! function_exists('cityController')) {
 	/*** @return CityController */
@@ -39,5 +40,12 @@ if ( ! function_exists('storeController')) {
 	function storeController(): StoreController
 	{
 		return app('storeController');
+	}
+}
+if ( ! function_exists('userController')) {
+	/*** @return UserController */
+	function userController(): UserController
+	{
+		return app('userController');
 	}
 }

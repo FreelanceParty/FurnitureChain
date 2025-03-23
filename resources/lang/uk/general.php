@@ -10,5 +10,6 @@ return [
 		'furniture_category_not_found' => 'Категорію меблів не знайдено',
 		'furniture_type_not_found'     => 'Тип меблів не знайдено',
 		'store_not_found'              => 'Магазин не знайдено',
+		'user_not_found'               => 'Користувача не знайдено',
 	],
 ];

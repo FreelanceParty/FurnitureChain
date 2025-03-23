@@ -7,6 +7,7 @@ use App\ModelControllers\FurnitureCategoryController;
 use App\ModelControllers\FurnitureController;
 use App\ModelControllers\FurnitureTypeController;
 use App\ModelControllers\StoreController;
+use App\ModelControllers\UserController;
 use Illuminate\Support\ServiceProvider;
 
 /** @class ControllerServiceProvider */
@@ -28,5 +29,7 @@ class ControllerServiceProvider extends ServiceProvider
 		$this->app->alias(FurnitureTypeController::class, 'furnitureTypeController');
 		$this->app->singleton(StoreController::class);
 		$this->app->alias(StoreController::class, 'storeController');
+		$this->app->singleton(UserController::class);
+		$this->app->alias(UserController::class, 'userController');
 	}
 }
