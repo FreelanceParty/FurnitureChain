@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use App\Models\Store;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,8 +15,9 @@ class StoreFactory extends Factory
 	/** @return array */
 	public function definition(): array
 	{
+		$lastCityId = City::all()->last()->getId();
 		return [
-			// TODO:
+			'city_id' => $this->faker->numberBetween(1, $lastCityId),
 		];
 	}
 }

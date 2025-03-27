@@ -13,7 +13,6 @@ return new class extends Migration {
 	{
 		Schema::create('stores', static function(Blueprint $table) {
 			$table->id();
-			$table->string('title');
 			$table->foreignId('city_id')->constrained('cities');
 			$table->timestamp('created_at')->useCurrent();
 			$table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

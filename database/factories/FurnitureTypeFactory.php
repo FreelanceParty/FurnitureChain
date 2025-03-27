@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\FurnitureCategory;
 use App\Models\FurnitureType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,8 +15,10 @@ class FurnitureTypeFactory extends Factory
 	/** @return array */
 	public function definition(): array
 	{
+		$lastCategoryId = FurnitureCategory::all()->last()->getId();
 		return [
-			// TODO:
+			'title'                 => $this->faker->words(2, TRUE),
+			'furniture_category_id' => $this->faker->numberBetween(1, $lastCategoryId),
 		];
 	}
 }

@@ -15,7 +15,7 @@ class FurnitureCategoryFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			// TODO:
+			'title' => $this->faker->words(2, true),
 		];
 	}
 }

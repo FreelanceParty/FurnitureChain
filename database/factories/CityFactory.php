@@ -15,7 +15,7 @@ class CityFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			// TODO:
+			'title' => $this->faker->city(),
 		];
 	}
 }
