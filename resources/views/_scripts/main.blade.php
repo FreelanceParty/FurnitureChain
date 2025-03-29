@@ -29,4 +29,14 @@
 		});
 	}
 
+	function changeContent(route, data = {}) {
+		sendRequest(
+			route,
+			data,
+			(response) => {
+				$content.html(response.html);
+			}
+		)
+	}
+
 </script>

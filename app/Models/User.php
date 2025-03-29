@@ -8,20 +8,23 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @class   User
- * @property int    $id
- * @property string $email
- * @property string $password
- * @property string $first_name
- * @property string $last_name
- * @property bool   $admin
- * @property Carbon $created_at
- * @property Carbon $updated_at
+ * @property int         $id
+ * @property string      $email
+ * @property string      $password
+ * @property string|NULL $first_name
+ * @property string|NULL $last_name
+ * @property bool        $admin
+ * @property Carbon      $created_at
+ * @property Carbon      $updated_at
  * @method static where(string $column, string $operator, string $value)
  * @package App/Models
  */
 class User extends Authenticatable
 {
 	use HasFactory;
+
+	/*** @var string[] */
+	protected $fillable = ['email', 'password'];
 
 	/** @return int */
 	public function getId(): int
@@ -59,32 +62,32 @@ class User extends Authenticatable
 		$this->password = $password;
 	}
 
-	/** @return string */
-	public function getFirstName(): string
+	/** @return string|NULL */
+	public function getFirstName(): ?string
 	{
 		return $this->first_name;
 	}
 
 	/**
-	 * @param string $firstName
+	 * @param string|NULL $firstName
 	 * @return void
 	 */
-	public function setFirstName(string $firstName): void
+	public function setFirstName(?string $firstName): void
 	{
 		$this->first_name = $firstName;
 	}
 
-	/** @return string */
-	public function getLastName(): string
+	/** @return string|NULL */
+	public function getLastName(): ?string
 	{
 		return $this->last_name;
 	}
 
 	/**
-	 * @param string $lastName
+	 * @param string|NULL $lastName
 	 * @return void
 	 */
-	public function setLastName(string $lastName): void
+	public function setLastName(?string $lastName): void
 	{
 		$this->last_name = $lastName;
 	}

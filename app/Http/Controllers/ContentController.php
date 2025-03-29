@@ -26,6 +26,50 @@ class ContentController extends Controller
 	 * @return JsonResponse
 	 * @throws Throwable
 	 */
+	public function getLoginContent(): JsonResponse
+	{
+		return response()->json([
+			'html' => view('auth.login')->render(),
+		]);
+	}
+
+	/**
+	 * @return JsonResponse
+	 * @throws Throwable
+	 */
+	public function getRegisterContent(): JsonResponse
+	{
+		return response()->json([
+			'html' => view('auth.register')->render(),
+		]);
+	}
+
+	/**
+	 * @return JsonResponse
+	 * @throws Throwable
+	 */
+	public function getProfileContent(): JsonResponse
+	{
+		return response()->json([
+			'html' => view('content.profile')->render(),
+		]);
+	}
+
+	/**
+	 * @return JsonResponse
+	 * @throws Throwable
+	 */
+	public function getCartContent(): JsonResponse
+	{
+		return response()->json([
+			'html' => view('content.cart')->render(),
+		]);
+	}
+
+	/**
+	 * @return JsonResponse
+	 * @throws Throwable
+	 */
 	public function getCategoriesContent(): JsonResponse
 	{
 		return response()->json([
