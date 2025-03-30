@@ -30,6 +30,13 @@ class Furniture extends AModel
 	/** @var string */
 	protected $table = 'furnitures';
 
+	/** @var array */
+	protected $casts = [
+		'discount_ends_at' => 'datetime',
+		'created_at'       => 'datetime',
+		'updated_at'       => 'datetime',
+	];
+
 	/*** @return BelongsTo */
 	public function furniture_type(): BelongsTo
 	{

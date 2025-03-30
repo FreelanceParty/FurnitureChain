@@ -5,6 +5,7 @@ namespace App\ModelControllers\Repositories;
 use App\Exceptions\FurnitureNotFoundException;
 use App\Models\Furniture;
 use DB;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class FurnitureRepository
@@ -40,4 +41,12 @@ class FurnitureRepository
 		return $furniture;
 	}
 
+	/**
+	 * @param array $ids
+	 * @return Collection
+	 */
+	public function getByIds(array $ids): Collection
+	{
+		return Furniture::whereIn('id', $ids)->get();
+	}
 }

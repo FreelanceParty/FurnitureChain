@@ -5,6 +5,7 @@ namespace App\ModelControllers;
 use App\Exceptions\FurnitureNotFoundException;
 use App\ModelControllers\Repositories\FurnitureRepository;
 use App\Models\Furniture;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class FurnitureController
@@ -44,4 +45,12 @@ class FurnitureController
 		return $this->repo->findByCode($code);
 	}
 
+	/**
+	 * @param array $ids
+	 * @return Collection
+	 */
+	public function getByIds(array $ids): Collection
+	{
+		return $this->repo->getByIds($ids);
+	}
 }

@@ -1,10 +1,24 @@
 <?php
 return [
-	'colors'     => [
+	'already_in_cart'       => 'Already in cart',
+	'auth'                  => [
+		'already_registered' => 'Already registered?',
+		'confirm_password'   => 'Confirm password',
+		'email'              => 'Email',
+		'login'              => 'Login',
+		'password'           => 'Password',
+		'register'           => 'Register',
+		'remember_me'        => 'Remember Me',
+	],
+	'cart'                  => 'Cart',
+	'code'                  => 'Code',
+	'color'                 => 'Color',
+	'colors'                => [
 		'black' => 'Black',
 		'white' => 'White',
 	],
-	'exceptions' => [
+	'description'           => 'Description',
+	'exceptions'            => [
 		'city_not_found'               => 'City Not Found',
 		'furniture_not_found'          => 'Furniture Not Found',
 		'furniture_category_not_found' => 'Furniture Category Not Found',
@@ -12,4 +26,12 @@ return [
 		'store_not_found'              => 'Store Not Found',
 		'user_not_found'               => 'User Not Found',
 	],
+	'load_image_error'      => 'Image loading error',
+	'logout'                => 'Logout',
+	'not_ready_to_shipping' => 'Not ready to shipping',
+	'place_order'           => 'Place an order',
+	'profile'               => 'Profile',
+	'ready_to_shipping'     => 'Ready to shipping',
+	'to_cart'               => 'To cart',
+	'total_to_pay'          => 'Total to be paid',
 ];

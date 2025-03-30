@@ -1,10 +1,23 @@
 <?php
 return [
-	'colors'     => [
+	'already_in_cart'       => 'Уже в кошику',
+	'auth'                  => [
+		'already_registered' => 'Вже зареєстровані?',
+		'confirm_password'   => 'Підтвердіть пароль',
+		'login'              => 'Увійти',
+		'password'           => 'Пароль',
+		'register'           => 'Зареєструватись',
+		'remember_me'        => 'Запам\'ятати мене',
+	],
+	'cart'                  => 'Корзина',
+	'code'                  => 'Код',
+	'color'                 => 'Колір',
+	'colors'                => [
 		'black' => 'Чорний',
 		'white' => 'Білий',
 	],
-	'exceptions' => [
+	'description'           => 'Опис',
+	'exceptions'            => [
 		'city_not_found'               => 'Місто не знайдено',
 		'furniture_not_found'          => 'Меблі не знайдено',
 		'furniture_category_not_found' => 'Категорію меблів не знайдено',
@@ -12,4 +25,12 @@ return [
 		'store_not_found'              => 'Магазин не знайдено',
 		'user_not_found'               => 'Користувача не знайдено',
 	],
+	'load_image_error'      => 'Помилка завантаження зображення',
+	'logout'                => 'Вийти',
+	'not_ready_to_shipping' => 'Не готово до відправки',
+	'place_order'           => 'Оформити замовлення',
+	'profile'               => 'Профіль',
+	'ready_to_shipping'     => 'Готово до відправки',
+	'to_cart'               => 'До кошика',
+	'total_to_pay'          => 'Усього до сплати',
 ];
