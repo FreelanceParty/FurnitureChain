@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Abstracts\AModel;
+use App\Traits\WithImage;
 use App\Traits\WithTitle;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,13 +20,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property integer|NULL  $discount
  * @property Carbon|NULL   $discount_ends_at
  * @property string|NULL   $description
- * @property string|NULL   $image
  * @package App/Models
  * @method where(string $column, string $operator, string $value)
  */
 class Furniture extends AModel
 {
-	use HasFactory, WithTitle;
+	use HasFactory, WithTitle, WithImage;
 
 	/** @var string */
 	protected $table = 'furnitures';
@@ -64,6 +64,12 @@ class Furniture extends AModel
 	public function setPrice(float $price): void
 	{
 		$this->price = $price;
+	}
+
+	/*** @return float */
+	public function getPriceWithDiscount(): float
+	{
+		return $this->price - ($this->price * $this->discount / 100);
 	}
 
 	/** @return int */
@@ -154,21 +160,6 @@ class Furniture extends AModel
 	public function setDescription(?string $description): void
 	{
 		$this->description = $description;
-	}
-
-	/** @return string|NULL */
-	public function getImage(): ?string
-	{
-		return $this->image;
-	}
-
-	/**
-	 * @param string|NULL $image
-	 * @return void
-	 */
-	public function setImage(?string $image): void
-	{
-		$this->image = $image;
 	}
 
 }

@@ -6,9 +6,7 @@
 
 @section('content')
 	<div class="flex gap-4 p-4 bg-gray-100 rounded-sm">
-		<div>
-			<img class="w-full h-full" src="{{ $furniture->getImage() ?? '' }}" alt='{{ 'Помилка завантаження зображення' }}'>
-		</div>
+		<img width="280" height="280" src="{{ $furniture->getImageForHtml() ?? asset('images/tmp_logo.png') }}" alt='{{ 'Помилка завантаження зображення' }}'>
 		<div class="flex flex-col gap-2 w-full">
 			<div>{{ $furniture->getTitle() }}</div>
 			<div class="flex flex-wrap gap-1">

@@ -4,9 +4,7 @@
 	<div class="flex flex-wrap gap-4 justify-center">
 		@foreach( $furnitures as $furn)
 			<div class="js-furniture flex flex-col border" data-id="{{ $furn->getId() }}">
-				<div class="w-80 h-80 border-b">
-					<img width="320" height="320" src="{{ asset('images/tmp_logo.png') }}">
-				</div>
+				<img class="border-b" width="280" height="280" src="{{ asset('images/tmp_logo.png') }}">
 				<div class="flex justify-center">{{ $furn->getTitle() }}</div>
 			</div>
 		@endforeach

@@ -18,5 +18,6 @@ return new class extends Migration {
 			$table->timestamp('created_at')->useCurrent();
 			$table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 		});
+		DB::statement("ALTER TABLE `furniture_types` ADD `image` MEDIUMBLOB AFTER `furniture_category_id`");
 	}
 };

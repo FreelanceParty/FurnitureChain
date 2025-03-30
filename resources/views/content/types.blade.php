@@ -4,9 +4,7 @@
 	<div class="flex flex-wrap gap-4 justify-center">
 		@foreach( $types as $t)
 			<div class="js-type flex flex-col border" data-id="{{ $t->getId() }}">
-				<div class="w-80 h-80 border-b">
-					<img width="320" height="320" src="{{ asset('images/tmp_logo.png') }}">
-				</div>
+				<img class="border-b" width="280" height="280" src="{{ asset('images/tmp_logo.png') }}">
 				<div class="flex justify-center">{{ $t->getTitle() }}</div>
 			</div>
 		@endforeach

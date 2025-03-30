@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Abstracts\AModel;
+use App\Traits\WithImage;
 use App\Traits\WithTitle;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class FurnitureType extends AModel
 {
-	use HasFactory, WithTitle;
+	use HasFactory, WithTitle, WithImage;
 
 	/** @return HasMany|NULL */
 	public function furnitures(): ?HasMany
