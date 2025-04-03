@@ -1,13 +1,22 @@
-<div class="js-login-form min-w-80 max-w-[800px]">
+<div class="js-login-form min-w-80 max-w-[700px]">
 	<div class="">
 		<label class="block font-medium text-sm text-gray-700">{{ trans('general.auth.email') }}</label>
-		<input id="email" type="email" name="email" class="border block p-1 mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required autofocus
-				autocomplete="username">
+		@include('_elements.input_text', [
+			'id'          => 'email',
+			'type'        => 'email',
+			'name'        => 'email',
+			'isRequired'  => TRUE,
+			'isAutofocus' => TRUE,
+		])
 	</div>
 	<div class="mt-4">
 		<label class="block font-medium text-sm text-gray-700">{{ trans('general.auth.password') }}</label>
-		<input id="password" type="password" name="password" class="border block p-1 mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required
-				autocomplete="current-password">
+		@include('_elements.input_text', [
+			'id'          => 'password',
+			'type'        => 'password',
+			'name'        => 'password',
+			'isRequired'  => TRUE,
+		])
 	</div>
 	<div class="block mt-4">
 		<label for="remember_me" class="inline-flex items-center">

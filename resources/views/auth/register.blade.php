@@ -1,30 +1,37 @@
-<div class="js-register-form min-w-80">
+<div class="js-register-form min-w-80 max-w-[700px]">
 	<div class="">
 		<label class="block font-medium text-sm text-gray-700">{{ trans('general.auth.email') }}</label>
-		<input id="email" type="email" name="email" class="border block p-1 mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required autofocus
-				autocomplete="username">
+		@include('_elements.input_text', [
+			'id'          => 'email',
+			'type'        => 'email',
+			'name'        => 'email',
+			'isRequired'  => TRUE,
+			'isAutofocus' => TRUE,
+		])
 	</div>
-
 	<div class="mt-4">
 		<label class="block font-medium text-sm text-gray-700">{{ trans('general.auth.password') }}</label>
-		<input id="password" type="password" name="password" class="border block p-1 mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required
-				autocomplete="current-password">
+		@include('_elements.input_text', [
+			'id'          => 'password',
+			'type'        => 'password',
+			'name'        => 'password',
+			'isRequired'  => TRUE,
+		])
 	</div>
-
 	<div class="mt-4">
 		<label class="block font-medium text-sm text-gray-700">{{ trans('general.auth.confirm_password') }}</label>
-
-		<input id="password_confirmation" type="password" name="password_confirmation"
-				class="border block p-1 mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required
-				autocomplete="new-password">
+		@include('_elements.input_text', [
+			'id'          => 'password_confirmation',
+			'type'        => 'password',
+			'name'        => 'password_confirmation',
+			'isRequired'  => TRUE,
+		])
 	</div>
-
 	<div class="flex items-center justify-between mt-6">
 		<div class="js-login underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 				data-route="{{ route('content.login') }}">
 			{{ trans('general.auth.already_registered') }}
 		</div>
-
 		<div class="flex items-center">
 			@include('_elements.button', [
 				'id'         => 'js-register',
