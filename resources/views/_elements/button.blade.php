@@ -4,8 +4,8 @@
 		@if( $isDisabled ?? FALSE )
 			disabled
 		@endif
-		@if( ! empty($routeName) )
-			data-route="{{ $routeName }}"
+		@if( ! empty($route) )
+			data-route="{{ $route }}"
 		@endif
 >
 	{{ $text }}

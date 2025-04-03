@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Action\UserActionController;
 use App\Http\Controllers\ContentController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [ContentController::class, 'index'])->name('index');
+Route::group(['prefix' => '/action'], static function() {
+	Route::group(['middleware' => 'auth'], static function() {
+		Route::post('/update_personal_data', [UserActionController::class, 'updatePersonalData'])->name('action.update-personal-data');
+	});
+});
 Route::group(['prefix' => '/content'], static function() {
 	Route::post('/login', [ContentController::class, 'getLoginContent'])->name('content.login');
 	Route::post('/register', [ContentController::class, 'getRegisterContent'])->name('content.register');

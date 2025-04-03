@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Throwable;
 
 /** @class ContentController */
@@ -53,7 +54,9 @@ class ContentController extends Controller
 	public function getProfileContent(): JsonResponse
 	{
 		return response()->json([
-			'html' => view('content.profile')->render(),
+			'html' => view('content.profile', [
+				'authUser' => Auth::user(),
+			])->render(),
 		]);
 	}
 
@@ -65,7 +68,7 @@ class ContentController extends Controller
 	public function getCartContent(Request $request): JsonResponse
 	{
 		/** @var Furniture[]|Collection $cartItems */
-		$ids = json_decode($request->get('cart'), FALSE, 512, JSON_THROW_ON_ERROR);
+		$ids         = json_decode($request->get('cart'), FALSE, 512, JSON_THROW_ON_ERROR);
 		$cartItems   = furnitureController()->getByIds($ids);
 		$totalAmount = 0;
 		foreach ($cartItems as $cartItem) {
