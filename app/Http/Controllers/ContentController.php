@@ -72,11 +72,7 @@ class ContentController extends Controller
 		$cartItems   = furnitureController()->getByIds($ids);
 		$totalAmount = 0;
 		foreach ($cartItems as $cartItem) {
-			if ($cartItem->getDiscount() && $cartItem->getDiscountEndsAt() > now()) {
-				$totalAmount += $cartItem->getPriceWithDiscount();
-			} else {
-				$totalAmount += $cartItem->getPrice();
-			}
+			$totalAmount += $cartItem->getActualPrice();
 		}
 		return response()->json([
 			'html' => view('content.cart', [
@@ -145,6 +141,52 @@ class ContentController extends Controller
 				'type'      => $furniture->furniture_type,
 				'category'  => $furniture->furniture_type->furniture_category,
 				'furniture' => $furniture,
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException|Throwable
+	 */
+	public function getConfirmOrderContent(Request $request): JsonResponse
+	{
+		return response()->json([
+			'html' => view('content.confirm_order', [
+				'authUser' => Auth::user(),
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException|Throwable
+	 */
+	public function getOrderDetailsContent(Request $request): JsonResponse
+	{
+		$order = orderController()->findById($request->get('order_id'));
+		return response()->json([
+			'html' => view('content.order_details', [
+				'authUser' => Auth::user(),
+				'order'    => $order,
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException|Throwable
+	 */
+	public function getUserOrdersContent(Request $request): JsonResponse
+	{
+		$authUser = Auth::user();
+		return response()->json([
+			'html' => view('content.user_orders', [
+				'authUser' => $authUser,
+				'orders'   => $authUser->orders,
 			])->render(),
 		]);
 	}

@@ -5,10 +5,10 @@
 	/** @var Furniture[]|Collection $cartItems */
 @endphp
 
-<div class="flex gap-4 w-full h-full flex-col lg:flex-row">
+<div class="js-cart-content flex gap-4 w-full h-full flex-col lg:flex-row">
 	<div class="flex flex-col gap-2 h-full">
 		@foreach( $cartItems as $item )
-			<div class="flex rounded-sm p-2 gap-2">
+			<div class="js-item flex rounded-sm p-2 gap-2 " data-furniture-id="{{ $item->getId() }}">
 				<img width="150" height="150" src="{{ $item->getImageForHtml() ?? asset('images/tmp_logo.png') }}">
 				<div class="w-full">{{ $item->getTitle() }}</div>
 				<div class="flex flex-col gap-2 text-nowrap text-right">
@@ -30,3 +30,18 @@
 		</button>
 	</div>
 </div>
+<script>
+	$(document).ready(function () {
+		'use strict';
+
+		const $console     = $('#console'),
+		      $content     = $console.find('#content'),
+		      $cartContent = $content.find('.js-cart-content'),
+		      $submit      = $cartContent.find('button');
+
+		$submit.on('click', function () {
+			changeContent('{{ route('content.confirm-order') }}');
+		});
+
+	});
+</script>

@@ -79,6 +79,14 @@ class Furniture extends AModel
 		return $this->price - ($this->price * $this->discount / 100);
 	}
 
+	/*** @return float */
+	public function getActualPrice(): float
+	{
+		return $this->getDiscount() && $this->getDiscountEndsAt() > now()
+			? $this->getPriceWithDiscount()
+			: $this->getPrice();
+	}
+
 	/** @return int */
 	public function getFurnitureTypeId(): int
 	{

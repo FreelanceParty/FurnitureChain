@@ -50,9 +50,14 @@
 		'id'    => 'submit',
 		'text'  => trans('general.save'),
 		'route' => route('action.update-personal-data'),
-		'class' => 'w-fit ml-auto'
+		'class' => 'w-fit ml-auto',
 	])
 </div>
+@include('_elements.button', [
+	'id'    => 'js-user-orders',
+	'text'  => trans('general.my_orders'),
+	'route' => route('content.user-orders'),
+])
 <script>
 	$(document).ready(function () {
 		'use strict';
@@ -64,7 +69,8 @@
 		      $password       = $profileContent.find('#password'),
 		      $firstName      = $profileContent.find('#first-name'),
 		      $lastName       = $profileContent.find('#last-name'),
-		      $submit         = $profileContent.find('#submit');
+		      $submit         = $profileContent.find('#submit'),
+		      $userOrdersBtn  = $content.find('#js-user-orders');
 
 		$submit.on('click', function () {
 			sendRequest(
@@ -79,6 +85,10 @@
 					alert(response.message);
 				}
 			);
+		});
+
+		$userOrdersBtn.on('click', function () {
+			changeContent($(this).data('route'));
 		});
 	});
 </script>

@@ -1,5 +1,11 @@
 <?php
 return [
+	'address'               => [
+		'address'      => 'Адреса',
+		'city'         => 'Місто',
+		'house_number' => 'Номер будинку',
+		'street'       => 'Вулиця',
+	],
 	'already_in_cart'       => 'Уже в кошику',
 	'auth'                  => [
 		'already_registered' => 'Вже зареєстровані?',
@@ -17,12 +23,15 @@ return [
 		'black' => 'Чорний',
 		'white' => 'Білий',
 	],
+	'confirm'               => 'Підтвердити',
 	'description'           => 'Опис',
 	'exceptions'            => [
 		'city_not_found'               => 'Місто не знайдено',
 		'furniture_not_found'          => 'Меблі не знайдено',
 		'furniture_category_not_found' => 'Категорію меблів не знайдено',
 		'furniture_type_not_found'     => 'Тип меблів не знайдено',
+		'not_implemented'              => 'Не імплементовано',
+		'order_not_found'              => 'Замовлення не знайдено',
 		'store_not_found'              => 'Магазин не знайдено',
 		'user_not_found'               => 'Користувача не знайдено',
 	],
@@ -30,20 +39,28 @@ return [
 	'last_name'             => 'Прізвище',
 	'load_image_error'      => 'Помилка завантаження зображення',
 	'logout'                => 'Вийти',
+	'my_orders'             => 'Мої замовлення',
 	'not_ready_to_shipping' => 'Не готово до відправки',
 	'personal_data'         => 'Особисті дані',
 	'place_order'           => 'Оформити замовлення',
 	'profile'               => 'Профіль',
 	'responses'             => [
+		'success' => [
+			'data_updated'  => 'Дані успішно оновлені',
+			'order_created' => 'Замовлення створено',
+		],
 		'fail'    => [
 			'error_occurred' => 'Сталась помилка',
 		],
-		'success' => [
-			'data_updated' => 'Дані успішно оновлені',
-		],
 	],
 	'save'                  => 'Зберегти',
+	'statuses'              => [
+		'completed' => 'Виконано',
+		'declined'  => 'Відхилено',
+		'pending'   => 'Очікується',
+	],
 	'ready_to_shipping'     => 'Готово до відправки',
 	'to_cart'               => 'До кошика',
+	'total_amount'          => 'Загальна сума',
 	'total_to_pay'          => 'Усього до сплати',
 ];

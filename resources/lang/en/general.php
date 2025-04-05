@@ -1,5 +1,11 @@
 <?php
 return [
+	'address'               => [
+		'address'      => 'Address',
+		'city'         => 'City',
+		'house_number' => 'House number',
+		'street'       => 'Street',
+	],
 	'already_in_cart'       => 'Already in cart',
 	'auth'                  => [
 		'already_registered' => 'Already registered?',
@@ -17,12 +23,15 @@ return [
 		'black' => 'Black',
 		'white' => 'White',
 	],
+	'confirm'               => 'Confirm',
 	'description'           => 'Description',
 	'exceptions'            => [
 		'city_not_found'               => 'City Not Found',
 		'furniture_not_found'          => 'Furniture Not Found',
 		'furniture_category_not_found' => 'Furniture Category Not Found',
 		'furniture_type_not_found'     => 'Furniture Type Not Found',
+		'not_implemented'              => 'Not implemented',
+		'order_not_found'              => 'Order Not Found',
 		'store_not_found'              => 'Store Not Found',
 		'user_not_found'               => 'User Not Found',
 	],
@@ -30,20 +39,28 @@ return [
 	'last_name'             => 'Last name',
 	'load_image_error'      => 'Image loading error',
 	'logout'                => 'Logout',
+	'my_orders'             => 'My orders',
 	'not_ready_to_shipping' => 'Not ready to shipping',
 	'personal_data'         => 'Personal data',
 	'place_order'           => 'Place an order',
 	'profile'               => 'Profile',
 	'ready_to_shipping'     => 'Ready to shipping',
 	'responses'             => [
+		'success' => [
+			'data_updated'  => 'Data updated successfully',
+			'order_created' => 'Order created successfully',
+		],
 		'fail'    => [
 			'error_occurred' => 'Some error occurred',
 		],
-		'success' => [
-			'data_updated' => 'Data updated successfully',
-		],
 	],
 	'save'                  => 'Save',
+	'statuses'              => [
+		'completed' => 'Completed',
+		'declined'  => 'Declined',
+		'pending'   => 'Pending',
+	],
 	'to_cart'               => 'To cart',
+	'total_amount'          => 'Total amount',
 	'total_to_pay'          => 'Total to be paid',
 ];

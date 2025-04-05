@@ -1,4 +1,7 @@
-<input id="{{ $id }}"
+<input
+		@if( ! empty( $id) )
+			id="{{ $id }}"
+		@endif
 		type="{{ $type ?? 'text' }}"
 		@if( ! empty($name) )
 			name="{{ $name }}"
