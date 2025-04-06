@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Abstracts\AModel;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,6 +19,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string           $house_number
  * @property integer          $status_id
  * @property float            $total_amount
+ * @property Carbon           $createdAt
+ * @property Carbon           $updatedAt
  * @package App/Models
  * @method where(string $column, string $operator, string $value)
  */
@@ -140,6 +143,18 @@ class Order extends AModel
 	public function setStatusId(int $statusId): void
 	{
 		$this->status_id = $statusId;
+	}
+
+	/** @return Carbon */
+	public function getCreatedAt(): Carbon
+	{
+		return $this->created_at;
+	}
+
+	/** @return Carbon */
+	public function getUpdatedAt(): Carbon
+	{
+		return $this->updated_at;
 	}
 
 }

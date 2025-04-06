@@ -2,14 +2,38 @@
 	use Illuminate\Support\Facades\Auth;
 @endphp
 
-<div id="header" class="bg-green-300 w-full min-h-[80px] flex justify-end gap-4">
-	<div class="js-cart cursor-pointer" data-route="{{ route('content.cart') }}">{{ trans('general.cart') }}</div>
+<div id="header" class="bg-green-300 w-full min-h-[80px] flex justify-end gap-4 items-center px-2">
+	@include('_elements.header_menu', [
+		'class'    => 'js-cart',
+		'route'    => route('content.cart'),
+		'imageSrc' => asset('images/icons/cart.png'),
+		'text'     => trans('general.cart'),
+	])
 	@if( Auth::user() )
-		<div class="js-menu cursor-pointer" data-route="{{ route('content.profile') }}">{{ trans('general.profile') }}</div>
-		<div class="js-logout cursor-pointer">{{ trans('general.logout') }}</div>
+		@include('_elements.header_menu', [
+			'class'    => 'js-menu',
+			'route'    => route('content.profile'),
+			'imageSrc' => asset('images/icons/profile.png'),
+			'text'     => trans('general.profile'),
+		])
+		@include('_elements.header_menu', [
+			'class'    => 'js-logout',
+			'imageSrc' => asset('images/icons/logout.png'),
+			'text'     => trans('general.logout'),
+		])
 	@else
-		<div class="js-menu cursor-pointer" data-route="{{ route('content.login') }}">{{ trans('general.auth.login') }}</div>
-		<div class="js-menu cursor-pointer" data-route="{{ route('content.register') }}">{{ trans('general.auth.register') }}</div>
+		@include('_elements.header_menu', [
+			'class'    => 'js-menu',
+			'route'    => route('content.login'),
+			'imageSrc' => asset('images/icons/login.png'),
+			'text'     => trans('general.auth.login'),
+		])
+		@include('_elements.header_menu', [
+			'class'    => 'js-menu',
+			'route'    => route('content.register'),
+			'imageSrc' => asset('images/icons/register.png'),
+			'text'     => trans('general.auth.register'),
+		])
 	@endif
 	<script>
 		$(document).ready(function () {

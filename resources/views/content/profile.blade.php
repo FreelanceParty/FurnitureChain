@@ -56,6 +56,7 @@
 @include('_elements.button', [
 	'id'    => 'js-user-orders',
 	'text'  => trans('general.my_orders'),
+	'class' => 'max-w-[700px]',
 	'route' => route('content.user-orders'),
 ])
 <script>

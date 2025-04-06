@@ -28,4 +28,19 @@ class OrderStatus
 			default => throw new NotImplementedException(),
 		};
 	}
+
+	/**
+	 * @param int $statusId
+	 * @return string
+	 * @throws NotImplementedException
+	 */
+	public static function getColorFor(int $statusId): string
+	{
+		return match ($statusId) {
+			self::COMPLETED => 'green',
+			self::DECLINED => 'red',
+			self::PENDING => 'yellow',
+			default => throw new NotImplementedException(),
+		};
+	}
 }
