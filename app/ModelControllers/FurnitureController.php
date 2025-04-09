@@ -53,4 +53,13 @@ class FurnitureController
 	{
 		return $this->repo->getByIds($ids);
 	}
+
+	/**
+	 * @param string $search
+	 * @return Collection
+	 */
+	public function getSearched(string $search): Collection
+	{
+		return $this->repo->getSearched($search);
+	}
 }

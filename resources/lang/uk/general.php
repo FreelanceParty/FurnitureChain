@@ -36,7 +36,7 @@ return [
 		'user_not_found'               => 'Користувача не знайдено',
 	],
 	'first_name'            => 'Ім\'я',
-	'from' => 'Від',
+	'from'                  => 'Від',
 	'last_name'             => 'Прізвище',
 	'load_image_error'      => 'Помилка завантаження зображення',
 	'logout'                => 'Вийти',
@@ -55,6 +55,7 @@ return [
 		],
 	],
 	'save'                  => 'Зберегти',
+	'search'                => 'Пошук',
 	'statuses'              => [
 		'completed' => 'Виконано',
 		'declined'  => 'Відхилено',

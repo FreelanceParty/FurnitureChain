@@ -34,5 +34,6 @@ Route::group(['prefix' => '/content'], static function() {
 	Route::post('/confirm_order', [ContentController::class, 'getConfirmOrderContent'])->name('content.confirm-order');
 	Route::post('/order_details', [ContentController::class, 'getOrderDetailsContent'])->name('content.order-details');
 	Route::post('/user_orders', [ContentController::class, 'getUserOrdersContent'])->name('content.user-orders');
+	Route::post('/furniture_search', [ContentController::class, 'getSearchedFurnituresContent'])->name('content.furniture-search');
 });
 require __DIR__ . '/auth.php';

@@ -36,7 +36,7 @@ return [
 		'user_not_found'               => 'User Not Found',
 	],
 	'first_name'            => 'First name',
-	'from' => 'From',
+	'from'                  => 'From',
 	'last_name'             => 'Last name',
 	'load_image_error'      => 'Image loading error',
 	'logout'                => 'Logout',
@@ -56,6 +56,7 @@ return [
 		],
 	],
 	'save'                  => 'Save',
+	'search'                => 'Search',
 	'statuses'              => [
 		'completed' => 'Completed',
 		'declined'  => 'Declined',

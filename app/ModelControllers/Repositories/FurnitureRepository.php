@@ -49,4 +49,13 @@ class FurnitureRepository
 	{
 		return Furniture::whereIn('id', $ids)->get();
 	}
+
+	/**
+	 * @param string $search
+	 * @return Collection
+	 */
+	public function getSearched(string $search): Collection
+	{
+		return Furniture::where('title', 'like', '%' . $search . '%')->get();
+	}
 }

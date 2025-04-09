@@ -6,7 +6,7 @@
 		@if( ! empty($name) )
 			name="{{ $name }}"
 		@endif
-		class="border block p-1 mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm {{ $class ?? '' }}"
+		class="border block p-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm {{ $class ?? '' }}"
 		@if( $isRequired ?? FALSE )
 			required
 		@endif
