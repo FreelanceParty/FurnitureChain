@@ -7,6 +7,7 @@ return [
 		'street'       => 'Street',
 	],
 	'already_in_cart'       => 'Already in cart',
+	'apply'                 => 'Apply',
 	'auth'                  => [
 		'already_registered' => 'Already registered?',
 		'confirm_password'   => 'Confirm password',
@@ -62,7 +63,9 @@ return [
 		'declined'  => 'Declined',
 		'pending'   => 'Pending',
 	],
+	'to'                    => 'To',
 	'to_cart'               => 'To cart',
 	'total_amount'          => 'Total amount',
 	'total_to_pay'          => 'Total to be paid',
+	'with_discount'         => 'With discount',
 ];

@@ -6,6 +6,7 @@ return [
 		'house_number' => 'Номер будинку',
 		'street'       => 'Вулиця',
 	],
+	'apply'                 => 'Застосувати',
 	'already_in_cart'       => 'Уже в кошику',
 	'auth'                  => [
 		'already_registered' => 'Вже зареєстровані?',
@@ -62,7 +63,9 @@ return [
 		'pending'   => 'Очікується',
 	],
 	'ready_to_shipping'     => 'Готово до відправки',
+	'to'                    => 'До',
 	'to_cart'               => 'До кошика',
 	'total_amount'          => 'Загальна сума',
 	'total_to_pay'          => 'Усього до сплати',
+	'with_discount'         => 'Зі знижкою',
 ];

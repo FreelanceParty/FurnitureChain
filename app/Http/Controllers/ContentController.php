@@ -210,4 +210,20 @@ class ContentController extends Controller
 			])->render(),
 		]);
 	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException|Throwable
+	 */
+	public function getFilteredFurnituresContent(Request $request): JsonResponse
+	{
+		$authUser = Auth::user();
+		return response()->json([
+			'html' => view('content.furnitures', [
+				'authUser'   => $authUser,
+				'furnitures' => furnitureController()->getFiltered($request->get('filters')),
+			])->render(),
+		]);
+	}
 }

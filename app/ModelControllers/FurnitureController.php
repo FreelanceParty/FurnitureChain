@@ -62,4 +62,13 @@ class FurnitureController
 	{
 		return $this->repo->getSearched($search);
 	}
+
+	/**
+	 * @param array $filters
+	 * @return Collection
+	 */
+	public function getFiltered(array $filters): Collection
+	{
+		return $this->repo->getFiltered($filters);
+	}
 }

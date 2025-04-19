@@ -18,4 +18,13 @@ class Color
 	{
 		return trans('general.colors.' . $color);
 	}
+
+	/** @return array */
+	public static function getAll(): array
+	{
+		return [
+			self::BLACK => trans('general.colors.black'),
+			self::WHITE => trans('general.colors.white'),
+		];
+	}
 }
