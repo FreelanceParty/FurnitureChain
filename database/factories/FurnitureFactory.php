@@ -19,13 +19,13 @@ class FurnitureFactory extends Factory
 		$lastTypeId = FurnitureType::all()->last()->getId();
 		return [
 			'title'             => $this->faker->words(3, TRUE),
-			'code'              => $this->faker->postcode(), // TODO: change
+			'code'              => $this->faker->postcode(),
 			'price'             => $this->faker->randomNumber(3),
 			'furniture_type_id' => $this->faker->numberBetween(1, $lastTypeId),
 			'ready_to_shipping' => $this->faker->boolean(80),
 			'color'             => $this->faker->randomElement([Color::BLACK, Color::WHITE]),
 			'discount'          => $this->faker->randomNumber(2),
-			'discount_ends_at'  => NULL,
+			'discount_ends_at'  => $this->faker->dateTimeBetween('-2 weeks', '+2 weeks'),
 			'description'       => $this->faker->realText(),
 			'image'             => NULL,
 		];

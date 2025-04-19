@@ -1,5 +1,6 @@
 <?php
 return [
+	'add'                   => 'Додати',
 	'address'               => [
 		'address'      => 'Адреса',
 		'city'         => 'Місто',
@@ -17,6 +18,7 @@ return [
 		'register'           => 'Зареєструватись',
 		'remember_me'        => 'Запам\'ятати мене',
 	],
+	'cancel'                => 'Скасувати',
 	'cart'                  => 'Корзина',
 	'code'                  => 'Код',
 	'color'                 => 'Колір',
@@ -25,7 +27,13 @@ return [
 		'white' => 'Білий',
 	],
 	'confirm'               => 'Підтвердити',
+	'delete'                => 'Видалити',
+	'delete_image'                => 'Видалити зображення',
 	'description'           => 'Опис',
+	'discount'              => 'Знижка',
+	'discount_ends_at'      => 'Закінчення знижки',
+	'edit'                  => 'Редагувати',
+	'editing'               => 'Редагування',
 	'exceptions'            => [
 		'city_not_found'               => 'Місто не знайдено',
 		'furniture_not_found'          => 'Меблі не знайдено',
@@ -38,6 +46,7 @@ return [
 	],
 	'first_name'            => 'Ім\'я',
 	'from'                  => 'Від',
+	'image'=> 'Зображення',
 	'last_name'             => 'Прізвище',
 	'load_image_error'      => 'Помилка завантаження зображення',
 	'logout'                => 'Вийти',
@@ -45,11 +54,15 @@ return [
 	'not_ready_to_shipping' => 'Не готово до відправки',
 	'personal_data'         => 'Особисті дані',
 	'place_order'           => 'Оформити замовлення',
+	'price'                 => 'Ціна',
 	'profile'               => 'Профіль',
+	'ready_to_shipping'     => 'Готово до відправки',
 	'responses'             => [
 		'success' => [
-			'data_updated'  => 'Дані успішно оновлені',
-			'order_created' => 'Замовлення створено',
+			'category_deleted' => 'Категорію видалено',
+			'data_updated'    => 'Дані успішно оновлені',
+			'order_created'   => 'Замовлення створено',
+			'product_deleted' => 'Товар видалено',
 		],
 		'fail'    => [
 			'error_occurred' => 'Сталась помилка',
@@ -62,7 +75,7 @@ return [
 		'declined'  => 'Відхилено',
 		'pending'   => 'Очікується',
 	],
-	'ready_to_shipping'     => 'Готово до відправки',
+	'title'                 => 'Назва',
 	'to'                    => 'До',
 	'to_cart'               => 'До кошика',
 	'total_amount'          => 'Загальна сума',

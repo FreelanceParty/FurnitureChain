@@ -1,5 +1,6 @@
 <?php
 return [
+	'add'                   => 'Add',
 	'address'               => [
 		'address'      => 'Address',
 		'city'         => 'City',
@@ -17,6 +18,7 @@ return [
 		'register'           => 'Register',
 		'remember_me'        => 'Remember Me',
 	],
+	'cancel'                => 'Cancel',
 	'cart'                  => 'Cart',
 	'code'                  => 'Code',
 	'color'                 => 'Color',
@@ -25,7 +27,13 @@ return [
 		'white' => 'White',
 	],
 	'confirm'               => 'Confirm',
+	'delete'                => 'Delete',
+	'delete_image'          => 'Delete image',
 	'description'           => 'Description',
+	'discount'              => 'Discount',
+	'discount_ends_at'      => 'Discount ends at',
+	'edit'                  => 'Edit',
+	'editing'               => 'Editing',
 	'exceptions'            => [
 		'city_not_found'               => 'City Not Found',
 		'furniture_not_found'          => 'Furniture Not Found',
@@ -38,6 +46,7 @@ return [
 	],
 	'first_name'            => 'First name',
 	'from'                  => 'From',
+	'image'                 => 'Image',
 	'last_name'             => 'Last name',
 	'load_image_error'      => 'Image loading error',
 	'logout'                => 'Logout',
@@ -45,12 +54,15 @@ return [
 	'not_ready_to_shipping' => 'Not ready to shipping',
 	'personal_data'         => 'Personal data',
 	'place_order'           => 'Place an order',
+	'price'                 => 'Price',
 	'profile'               => 'Profile',
 	'ready_to_shipping'     => 'Ready to shipping',
 	'responses'             => [
 		'success' => [
-			'data_updated'  => 'Data updated successfully',
-			'order_created' => 'Order created successfully',
+			'category_deleted' => 'Category deleted',
+			'data_updated'     => 'Data updated successfully',
+			'order_created'    => 'Order created successfully',
+			'product_deleted'  => 'Product deleted successfully',
 		],
 		'fail'    => [
 			'error_occurred' => 'Some error occurred',
@@ -63,6 +75,7 @@ return [
 		'declined'  => 'Declined',
 		'pending'   => 'Pending',
 	],
+	'title'                 => 'Title',
 	'to'                    => 'To',
 	'to_cart'               => 'To cart',
 	'total_amount'          => 'Total amount',

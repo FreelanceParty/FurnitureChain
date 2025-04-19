@@ -21,6 +21,7 @@ class ContentController extends Controller
 	public function index()
 	{
 		return view('welcome', [
+			'authUser'   => Auth::user(),
 			'categories' => FurnitureCategory::all(),
 		]);
 	}
@@ -70,16 +71,20 @@ class ContentController extends Controller
 	public function getCartContent(Request $request): JsonResponse
 	{
 		/** @var Furniture[]|Collection $cartItems */
-		$ids         = json_decode($request->get('cart'), FALSE, 512, JSON_THROW_ON_ERROR);
-		$cartItems   = furnitureController()->getByIds($ids);
+		$cart        = $request->get('cart') ?? [];
 		$totalAmount = 0;
-		foreach ($cartItems as $cartItem) {
-			$totalAmount += $cartItem->getActualPrice();
+		if ( ! empty($cart)) {
+			$ids       = json_decode($cart, FALSE, 512, JSON_THROW_ON_ERROR);
+			$cartItems = furnitureController()->getByIds($ids);
+			foreach ($cartItems as $cartItem) {
+				$totalAmount += $cartItem->getActualPrice();
+			}
 		}
 		return response()->json([
 			'html' => view('content.cart', [
+				'authUser'    => Auth::user(),
 				'totalAmount' => $totalAmount,
-				'cartItems'   => $cartItems,
+				'cartItems'   => $cartItems ?? [],
 			])->render(),
 		]);
 	}
@@ -92,6 +97,7 @@ class ContentController extends Controller
 	{
 		return response()->json([
 			'html' => view('content.categories', [
+				'authUser'   => Auth::user(),
 				'categories' => FurnitureCategory::all(),
 			])->render(),
 		]);
@@ -107,6 +113,7 @@ class ContentController extends Controller
 		$category = furnitureCategoryController()->findById($request->get('category_id'));
 		return response()->json([
 			'html' => view('content.types', [
+				'authUser' => Auth::user(),
 				'category' => $category,
 				'types'    => $category->furniture_types,
 			])->render(),
@@ -123,6 +130,7 @@ class ContentController extends Controller
 		$type = furnitureTypeController()->findById($request->get('type_id'));
 		return response()->json([
 			'html' => view('content.furnitures', [
+				'authUser'   => Auth::user(),
 				'type'       => $type,
 				'category'   => $type->furniture_category,
 				'furnitures' => $type->furnitures,
@@ -140,6 +148,7 @@ class ContentController extends Controller
 		$furniture = furnitureController()->findById($request->get('furniture_id'));
 		return response()->json([
 			'html' => view('content.details', [
+				'authUser'  => Auth::user(),
 				'type'      => $furniture->furniture_type,
 				'category'  => $furniture->furniture_type->furniture_category,
 				'furniture' => $furniture,

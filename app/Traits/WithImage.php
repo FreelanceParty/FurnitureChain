@@ -14,12 +14,6 @@ trait WithImage
 		return $this->image;
 	}
 
-	/** @return string|NULL */
-	public function getImageForHtml(): ?string
-	{
-		return $this->getImage() ? 'data:image/jpeg;base64,' . base64_encode($this->getImage()) : NULL;
-	}
-
 	/**
 	 * @param string|NULL $image
 	 * @return void

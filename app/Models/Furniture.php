@@ -162,6 +162,15 @@ class Furniture extends AModel
 		$this->discount_ends_at = $discountEndsAt;
 	}
 
+	/** @return int|NULL */
+	public function getActualDiscount(): ?int
+	{
+		if ($this->getDiscount() === NULL || $this->getDiscountEndsAt() === NULL || $this->getDiscountEndsAt() < now()) {
+			return NULL;
+		}
+		return $this->getDiscount();
+	}
+
 	/** @return string|NULL */
 	public function getDescription(): ?string
 	{
