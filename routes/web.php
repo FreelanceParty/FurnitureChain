@@ -20,6 +20,7 @@ Route::group(['prefix' => '/action'], static function() {
 	Route::post('/create_order', [OrderActionController::class, 'createOrder'])->name('action.create-order');
 	Route::group(['middleware' => 'auth'], static function() {
 		Route::post('/update_personal_data', [UserActionController::class, 'updatePersonalData'])->name('action.update-personal-data');
+		Route::post('/update_user_address', [UserActionController::class, 'updateUserAddress'])->name('action.update-user-address');
 	});
 });
 Route::group(['prefix' => '/content'], static function() {

@@ -53,9 +53,11 @@ class ContentController extends Controller
 	 */
 	public function getProfileContent(): JsonResponse
 	{
+		$authUser = Auth::user();
 		return response()->json([
 			'html' => view('content.profile', [
-				'authUser' => Auth::user(),
+				'authUser' => $authUser,
+				'address'  => $authUser->address,
 			])->render(),
 		]);
 	}
@@ -152,9 +154,11 @@ class ContentController extends Controller
 	 */
 	public function getConfirmOrderContent(Request $request): JsonResponse
 	{
+		$authUser = Auth::user();
 		return response()->json([
 			'html' => view('content.confirm_order', [
-				'authUser' => Auth::user(),
+				'authUser' => $authUser,
+				'address'  => $authUser?->address,
 			])->render(),
 		]);
 	}

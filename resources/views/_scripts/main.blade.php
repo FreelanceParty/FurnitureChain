@@ -39,4 +39,30 @@
 		)
 	}
 
+	function getElementInputs($element) {
+		const data    = {},
+		      $inputs = $element.find('input, select, textarea');
+
+		$inputs.each(function () {
+			const $elem = $(this),
+			      name  = $elem.attr('name');
+
+			if (!name) {
+				return;
+			}
+
+			if ($elem.is("select")) {
+				data[name] = $elem.find(':selected').val();
+			} else if ($elem.prop('type') === 'checkbox') {
+				if ($elem.is(':checked')) {
+					data[name] = true;
+				}
+			} else {
+				data[name] = $elem.val();
+			}
+		});
+
+		return data;
+	}
+
 </script>

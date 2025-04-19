@@ -1,6 +1,9 @@
 @php
 	use App\Models\User;
+	use App\Models\UserAddress;
+
 	/** @var User $authUser */
+	/** @var UserAddress $address */
 @endphp
 
 <div class="js-confirm-order-content flex flex-col gap-3 max-w-[700px]">
@@ -45,7 +48,7 @@
 					'id'          => 'city',
 					'name'        => 'city',
 					'isRequired'  => TRUE,
-					'value'       => '',
+					'value'       => $address?->getCity(),
 				])
 			</label>
 			<label>
@@ -54,7 +57,7 @@
 					'id'          => 'street',
 					'name'        => 'street',
 					'isRequired'  => TRUE,
-					'value'       => '',
+					'value'       => $address?->getStreet(),
 				])
 			</label>
 			<label>
@@ -63,7 +66,7 @@
 					'id'          => 'house-number',
 					'name'        => 'house_number',
 					'isRequired'  => TRUE,
-					'value'       => '',
+					'value'       => $address?->getHouseNumber(),
 				])
 			</label>
 		</div>
@@ -82,27 +85,15 @@
 		const $console        = $('#console'),
 		      $content        = $console.find('#content'),
 		      $confirmContent = $content.find('.js-confirm-order-content'),
-		      $email          = $confirmContent.find('#email'),
-		      $firstName      = $confirmContent.find('#first-name'),
-		      $lastName       = $confirmContent.find('#last-name'),
-		      $city           = $confirmContent.find('#city'),
-		      $street         = $confirmContent.find('#street'),
-		      $houseNumber    = $confirmContent.find('#house-number'),
 		      $submit         = $confirmContent.find('#submit');
 
 		$submit.on('click', function () {
-			const cart = localStorage.getItem('cart');
+			const data = getElementInputs($confirmContent);
+
+			data.cart = localStorage.getItem('cart');
 			sendRequest(
 				$(this).data('route'),
-				{
-					cart:         cart,
-					email:        $email.val(),
-					first_name:   $firstName.val(),
-					last_name:    $lastName.val(),
-					city:         $city.val(),
-					street:       $street.val(),
-					house_number: $houseNumber.val(),
-				},
+				data,
 				(response) => {
 					alert(response.message);
 				}

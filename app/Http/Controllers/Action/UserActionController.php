@@ -21,10 +21,37 @@ class UserActionController extends Controller
 		try {
 			$user = Auth::user();
 			$user->setEmail($request->get('email'));
-			$user->setPassword(Hash::make($request->get('password')));
+			if ($request->get('password') !== "********") {
+				$user->setPassword(Hash::make($request->get('password')));
+			}
 			$user->setFirstName($request->get('first_name'));
 			$user->setLastName($request->get('last_name'));
 			$user->save();
+			return response()->json([
+				'ack'     => 'success',
+				'message' => trans('general.responses.success.data_updated'),
+			]);
+		} catch (Throwable $e) {
+			return response()->json([
+				'ack'     => 'fail',
+				'message' => trans('general.responses.fail.error_occurred'),
+			]);
+		}
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 */
+	public function updateUserAddress(Request $request): JsonResponse
+	{
+		try {
+			$user    = Auth::user();
+			$address = $user->address;
+			$address->setCity($request->get('city'));
+			$address->setStreet($request->get('street'));
+			$address->setHouseNumber($request->get('house_number'));
+			$address->save();
 			return response()->json([
 				'ack'     => 'success',
 				'message' => trans('general.responses.success.data_updated'),

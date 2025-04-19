@@ -5,19 +5,21 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @class   User
- * @property int         $id
- * @property string      $email
- * @property string      $password
- * @property string|NULL $first_name
- * @property string|NULL $last_name
- * @property bool        $admin
- * @property Carbon      $created_at
- * @property Carbon      $updated_at
- * @property Order[]     $orders
+ * @property int              $id
+ * @property string           $email
+ * @property string           $password
+ * @property string|NULL      $first_name
+ * @property string|NULL      $last_name
+ * @property bool             $admin
+ * @property Carbon           $created_at
+ * @property Carbon           $updated_at
+ * @property Order[]          $orders
+ * @property UserAddress|NULL $address
  * @method static where(string $column, string $operator, string $value)
  * @package App/Models
  */
@@ -27,6 +29,12 @@ class User extends Authenticatable
 
 	/*** @var string[] */
 	protected $fillable = ['email', 'password'];
+
+	/** @return HasOne */
+	public function address(): HasOne
+	{
+		return $this->hasOne(UserAddress::class);
+	}
 
 	/** @return HasMany */
 	public function orders(): HasMany

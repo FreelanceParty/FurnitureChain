@@ -32,4 +32,12 @@ class UserFactory extends Factory
 			'admin'      => fake()->boolean(30),
 		];
 	}
+
+	/** @return Factory|UserFactory */
+	public function configure(): Factory|UserFactory
+	{
+		return $this->afterCreating(function(User $user) {
+			UserAddressFactory::new(['user_id' => $user->getId()])->create();
+		});
+	}
 }
