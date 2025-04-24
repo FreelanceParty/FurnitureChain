@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @class   Store
- * @property integer $city_id
- * @property City    $city
+ * @property integer     $city_id
+ * @property City        $city
+ * @property string|NULL $address
  * @package App/Models
  * @method where(string $column, string $operator, string $value)
  */
@@ -36,6 +37,27 @@ class Store extends AModel
 	public function setCityId(int $cityId): void
 	{
 		$this->city_id = $cityId;
+	}
+
+	/** @return string|NULL */
+	public function getAddress(): ?string
+	{
+		return $this->address;
+	}
+
+	/**
+	 * @param string|NULL $address
+	 * @return void
+	 */
+	public function setAddress(?string $address): void
+	{
+		$this->address = $address;
+	}
+
+	/** @return string */
+	public function getFullAddress(): string
+	{
+		return trim(sprintf('%s, %s', $this->city->getTitle(), $this->getAddress() ?? ''));
 	}
 
 }

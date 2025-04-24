@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Action\OrderActionController;
+use App\Http\Controllers\Action\StoreActionController;
 use App\Http\Controllers\Action\UserActionController;
 use App\Http\Controllers\ContentController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,7 @@ Route::group(['prefix' => '/action'], static function() {
 	Route::group(['middleware' => 'auth'], static function() {
 		Route::post('/update_personal_data', [UserActionController::class, 'updatePersonalData'])->name('action.update-personal-data');
 		Route::post('/update_user_address', [UserActionController::class, 'updateUserAddress'])->name('action.update-user-address');
+		Route::post('/update_store_address', [StoreActionController::class, 'updateStoreAddress'])->name('action.update-store-address');
 	});
 });
 Route::group(['prefix' => '/content'], static function() {
@@ -37,5 +39,7 @@ Route::group(['prefix' => '/content'], static function() {
 	Route::post('/user_orders', [ContentController::class, 'getUserOrdersContent'])->name('content.user-orders');
 	Route::post('/furniture_search', [ContentController::class, 'getSearchedFurnituresContent'])->name('content.furniture-search');
 	Route::post('/furniture_filter', [ContentController::class, 'getFilteredFurnituresContent'])->name('content.furniture-filter');
+	Route::post('/pay_ship_info', [ContentController::class, 'getPayShipContent'])->name('content.pay-ship-info');
+	Route::post('/our_stores', [ContentController::class, 'getOurStoresContent'])->name('content.our-stores');
 });
 require __DIR__ . '/auth.php';

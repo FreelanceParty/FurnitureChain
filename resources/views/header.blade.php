@@ -14,6 +14,18 @@
 	</div>
 	<div class="flex gap-4">
 		@include('_elements.header_menu', [
+			'class'    => 'js-menu',
+			'route'    => route('content.our-stores'),
+			'imageSrc' => asset('images/icons/store.png'),
+			'text'     => trans('general.our_stores'),
+		])
+		@include('_elements.header_menu', [
+			'class'    => 'js-menu',
+			'route'    => route('content.pay-ship-info'),
+			'imageSrc' => asset('images/icons/pay-ship-info.png'),
+			'text'     => trans('general.pay_and_ship'),
+		])
+		@include('_elements.header_menu', [
 			'class'    => 'js-cart',
 			'route'    => route('content.cart'),
 			'imageSrc' => asset('images/icons/cart.png'),

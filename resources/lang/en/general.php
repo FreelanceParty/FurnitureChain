@@ -52,6 +52,7 @@ return [
 	'logout'                => 'Logout',
 	'my_orders'             => 'My orders',
 	'not_ready_to_shipping' => 'Not ready to shipping',
+	'pay_and_ship'          => 'Payment and shipping',
 	'personal_data'         => 'Personal data',
 	'place_order'           => 'Place an order',
 	'price'                 => 'Price',
@@ -70,6 +71,7 @@ return [
 	],
 	'save'                  => 'Save',
 	'search'                => 'Search',
+	'shipping'              => 'Shipping',
 	'statuses'              => [
 		'completed' => 'Completed',
 		'declined'  => 'Declined',

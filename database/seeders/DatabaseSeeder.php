@@ -21,12 +21,20 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		City::factory(10)->create();
-		Store::factory(10)->create();
+		City::factory(3)->create();
+		Store::factory(3)->create();
 		$this->createCategories();
 		$this->createTypes();
 		Furniture::factory(15)->create();
 		User::factory(10)->create();
+		User::factory()->create([
+			'email' => 'admin@gmail.com',
+			'admin' => TRUE,
+		]);
+		User::factory()->create([
+			'email' => 'user@gmail.com',
+			'admin' => FALSE,
+		]);
 	}
 
 	/** @return void */

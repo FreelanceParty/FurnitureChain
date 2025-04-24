@@ -14,6 +14,7 @@ return new class extends Migration {
 		Schema::create('stores', static function(Blueprint $table) {
 			$table->id();
 			$table->foreignId('city_id')->constrained('cities');
+			$table->string('address')->nullable();
 			$table->timestamp('created_at')->useCurrent();
 			$table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 		});

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\FurnitureNotFoundException;
 use App\Models\Furniture;
 use App\Models\FurnitureCategory;
+use App\Models\Store;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -232,6 +233,38 @@ class ContentController extends Controller
 			'html' => view('content.furnitures', [
 				'authUser'   => $authUser,
 				'furnitures' => furnitureController()->getFiltered($request->get('filters')),
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException|Throwable
+	 */
+	public function getPayShipContent(Request $request): JsonResponse
+	{
+		$authUser = Auth::user();
+		return response()->json([
+			'html' => view('content.pay_ship_info', [
+				'authUser' => $authUser,
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException|Throwable
+	 */
+	public function getOurStoresContent(Request $request): JsonResponse
+	{
+		$authUser = Auth::user();
+		$stores = Store::all();
+		return response()->json([
+			'html' => view('content.our_stores', [
+				'authUser' => $authUser,
+				'stores'   => $stores,
 			])->render(),
 		]);
 	}
