@@ -62,10 +62,15 @@ return [
 	'ready_to_shipping'     => 'Готово до відправки',
 	'responses'             => [
 		'success' => [
+			'category_created' => 'Категорію створено',
 			'category_deleted' => 'Категорію видалено',
+			'category_updated' => 'Категорію оновлено',
 			'data_updated'     => 'Дані успішно оновлені',
 			'order_created'    => 'Замовлення створено',
 			'product_deleted'  => 'Товар видалено',
+			'type_created'     => 'Тип створено',
+			'type_deleted'     => 'Тип видалено',
+			'type_updated'     => 'Тип оновлено',
 		],
 		'fail'    => [
 			'error_occurred' => 'Сталась помилка',

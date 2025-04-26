@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\FurnitureCategoryNotFoundException;
 use App\Exceptions\FurnitureNotFoundException;
+use App\Exceptions\FurnitureTypeNotFoundException;
 use App\Models\City;
 use App\Models\Furniture;
 use App\Models\FurnitureCategory;
@@ -267,6 +269,47 @@ class ContentController extends Controller
 			'html' => view('content.our_stores', [
 				'authUser' => $authUser,
 				'stores'   => $stores,
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException
+	 * @throws Throwable
+	 */
+	public function getEditCategoryContent(Request $request): JsonResponse
+	{
+		try {
+			$cat = furnitureCategoryController()->findById($request->get('id'));
+		} catch (FurnitureCategoryNotFoundException $e) {
+		}
+		return response()->json([
+			'html' => view('content.editable.category_edit', [
+				'authUser' => Auth::user(),
+				'category' => $cat ?? NULL,
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException
+	 * @throws Throwable
+	 */
+	public function getEditTypeContent(Request $request): JsonResponse
+	{
+		try {
+			$type = furnitureTypeController()->findById($request->get('id'));
+		} catch (FurnitureTypeNotFoundException $e) {
+		}
+		return response()->json([
+			'html' => view('content.editable.type_edit', [
+				'authUser'    => Auth::user(),
+				'type'        => $type ?? NULL,
+				'categoryId' => $request->get('category_id'),
 			])->render(),
 		]);
 	}

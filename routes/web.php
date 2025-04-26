@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Action\FurnitureCategoryActionController;
+use App\Http\Controllers\Action\FurnitureTypeActionController;
 use App\Http\Controllers\Action\OrderActionController;
 use App\Http\Controllers\Action\StoreActionController;
 use App\Http\Controllers\Action\UserActionController;
@@ -23,6 +25,10 @@ Route::group(['prefix' => '/action'], static function() {
 		Route::post('/update_personal_data', [UserActionController::class, 'updatePersonalData'])->name('action.update-personal-data');
 		Route::post('/update_user_address', [UserActionController::class, 'updateUserAddress'])->name('action.update-user-address');
 		Route::post('/update_store_address', [StoreActionController::class, 'updateStoreAddress'])->name('action.update-store-address');
+		Route::post('/update_category', [FurnitureCategoryActionController::class, 'updateCategoryData'])->name('action.update-category-data');
+		Route::post('/delete_category', [FurnitureCategoryActionController::class, 'deleteCategory'])->name('action.delete-category');
+		Route::post('/update_type', [FurnitureTypeActionController::class, 'updateTypeData'])->name('action.update-type-data');
+		Route::post('/delete_type', [FurnitureTypeActionController::class, 'deleteType'])->name('action.delete-type');
 	});
 });
 Route::group(['prefix' => '/content'], static function() {
@@ -41,5 +47,7 @@ Route::group(['prefix' => '/content'], static function() {
 	Route::post('/furniture_filter', [ContentController::class, 'getFilteredFurnituresContent'])->name('content.furniture-filter');
 	Route::post('/pay_ship_info', [ContentController::class, 'getPayShipContent'])->name('content.pay-ship-info');
 	Route::post('/our_stores', [ContentController::class, 'getOurStoresContent'])->name('content.our-stores');
+	Route::post('/edit_category', [ContentController::class, 'getEditCategoryContent'])->name('content.edit-category');
+	Route::post('/edit_type', [ContentController::class, 'getEditTypeContent'])->name('content.edit-type');
 });
 require __DIR__ . '/auth.php';
