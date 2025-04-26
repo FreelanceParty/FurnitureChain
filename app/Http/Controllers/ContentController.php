@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\FurnitureNotFoundException;
+use App\Models\City;
 use App\Models\Furniture;
 use App\Models\FurnitureCategory;
 use App\Models\Store;
@@ -24,6 +25,7 @@ class ContentController extends Controller
 		return view('welcome', [
 			'authUser'   => Auth::user(),
 			'categories' => FurnitureCategory::all(),
+			'cities'     => City::all(),
 		]);
 	}
 
@@ -260,7 +262,7 @@ class ContentController extends Controller
 	public function getOurStoresContent(Request $request): JsonResponse
 	{
 		$authUser = Auth::user();
-		$stores = Store::all();
+		$stores   = Store::all();
 		return response()->json([
 			'html' => view('content.our_stores', [
 				'authUser' => $authUser,

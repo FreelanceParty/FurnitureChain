@@ -3,10 +3,20 @@
 @endphp
 
 <div id='sider' class="bg-green-300 flex flex-col min-w-[300px] h-full">
-	<div id="logo" class="flex items-center ml-4 min-h-[80px]">
+	<div id="logo" class="flex items-center pl-4 min-h-[80px] gap-2 cursor-pointer  shadow-2xl">
 		<img height="60" width="60" src="{{ asset('images/logo.png') }}">
+		<div class="font-bold text-[28px] text-gray-800 drop-shadow-lg">Меблі для усіх</div>
 	</div>
 	<div class="h-full min-w-[300px] p-4 flex flex-col gap-2">
+		<div class="flex gap-2">
+			@include('_elements.input_text', [
+				'id' => 'js-search-input',
+			])
+			@include('_elements.button', [
+				'id'   => 'js-search-button',
+				'text' => trans('general.search'),
+			])
+		</div>
 		<div class="js-filter-section flex flex-col gap-1">
 			<label>{{ trans('Ціна') }}</label>
 			<div class="flex space-x-4">
@@ -65,14 +75,25 @@
 
 		const $console       = $('#console'),
 		      $sider         = $console.find('#sider'),
+		      $searchInput   = $sider.find('#js-search-input'),
+		      $logo          = $sider.find('#logo'),
+		      $searchButton  = $sider.find('#js-search-button'),
 		      $filterSection = $sider.find('.js-filter-section'),
 		      $filterBtn     = $sider.find('#js-filter-btn');
+
+		$searchButton.on('click', function () {
+			changeContent('{{ route('content.furniture-search') }}', {search: $searchInput.val()});
+		});
 
 		$filterBtn.on('click', function () {
 			changeContent(
 				$(this).data('route'),
 				{filters: getElementInputs($filterSection)}
 			);
+		});
+
+		$logo.on('click', function () {
+			changeContent('{{ route('content.categories') }}');
 		});
 	});
 </script>
