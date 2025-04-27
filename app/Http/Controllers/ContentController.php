@@ -307,9 +307,30 @@ class ContentController extends Controller
 		}
 		return response()->json([
 			'html' => view('content.editable.type_edit', [
-				'authUser'    => Auth::user(),
-				'type'        => $type ?? NULL,
+				'authUser'   => Auth::user(),
+				'type'       => $type ?? NULL,
 				'categoryId' => $request->get('category_id'),
+			])->render(),
+		]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws FurnitureNotFoundException
+	 * @throws Throwable
+	 */
+	public function getEditFurnitureContent(Request $request): JsonResponse
+	{
+		try {
+			$furniture = furnitureController()->findById($request->get('id'));
+		} catch (FurnitureNotFoundException $e) {
+		}
+		return response()->json([
+			'html' => view('content.editable.furniture_edit', [
+				'authUser'  => Auth::user(),
+				'furniture' => $furniture ?? NULL,
+				'typeId'    => $request->get('type_id'),
 			])->render(),
 		]);
 	}

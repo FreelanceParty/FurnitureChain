@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Action\FurnitureActionController;
 use App\Http\Controllers\Action\FurnitureCategoryActionController;
 use App\Http\Controllers\Action\FurnitureTypeActionController;
 use App\Http\Controllers\Action\OrderActionController;
@@ -29,6 +30,8 @@ Route::group(['prefix' => '/action'], static function() {
 		Route::post('/delete_category', [FurnitureCategoryActionController::class, 'deleteCategory'])->name('action.delete-category');
 		Route::post('/update_type', [FurnitureTypeActionController::class, 'updateTypeData'])->name('action.update-type-data');
 		Route::post('/delete_type', [FurnitureTypeActionController::class, 'deleteType'])->name('action.delete-type');
+		Route::post('/update_furniture', [FurnitureActionController::class, 'updateFurnitureData'])->name('action.update-furniture-data');
+		Route::post('/delete_furniture', [FurnitureActionController::class, 'deleteFurniture'])->name('action.delete-furniture');
 	});
 });
 Route::group(['prefix' => '/content'], static function() {
@@ -49,5 +52,6 @@ Route::group(['prefix' => '/content'], static function() {
 	Route::post('/our_stores', [ContentController::class, 'getOurStoresContent'])->name('content.our-stores');
 	Route::post('/edit_category', [ContentController::class, 'getEditCategoryContent'])->name('content.edit-category');
 	Route::post('/edit_type', [ContentController::class, 'getEditTypeContent'])->name('content.edit-type');
+	Route::post('/edit_furniture', [ContentController::class, 'getEditFurnitureContent'])->name('content.edit-furniture');
 });
 require __DIR__ . '/auth.php';
