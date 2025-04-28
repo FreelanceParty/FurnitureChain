@@ -8,7 +8,7 @@
 			<div class="js-nav cursor-pointer underline hover:text-red-600" data-id="{{ $type->getId() }}" data-route="{{ route('content.furnitures') }}">{{ $type->getTitle() }}</div>
 			@if( ! empty($furniture) )
 				>
-				<div class="js-nav cursor-pointer underline hover:text-red-600" data-id="{{ $furniture->getId() }}" data-route="{{ route('content.details') }}">{{ $furniture->getTitle() }}</div>
+				<div data-id="{{ $furniture->getId() }}">{{ $furniture->getTitle() }}</div>
 			@endif
 		@endif
 	@endif

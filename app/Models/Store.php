@@ -5,18 +5,27 @@ namespace App\Models;
 use App\Models\Abstracts\AModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @class   Store
- * @property integer     $city_id
- * @property City        $city
- * @property string|NULL $address
+ * @property integer             $city_id
+ * @property City                $city
+ * @property string|NULL         $address
+ * @property Furniture[]|HasMany $furnitures
  * @package App/Models
  * @method where(string $column, string $operator, string $value)
  */
 class Store extends AModel
 {
 	use HasFactory;
+
+	/*** @return BelongsToMany */
+	public function furnitures(): BelongsToMany
+	{
+		return $this->belongsToMany(Furniture::class, 'furniture_stores')->withPivot('count');
+	}
 
 	/*** @return BelongsTo */
 	public function city(): BelongsTo

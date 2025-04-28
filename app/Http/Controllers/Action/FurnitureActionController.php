@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Action;
 use App\Exceptions\FurnitureNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Models\Furniture;
+use App\Models\Store;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -42,6 +43,11 @@ class FurnitureActionController extends Controller
 				$furniture->setImage($image->encode('data-url', 80)->encoded);
 			} else {
 				$furniture->setImage(NULL);
+			}
+			$cities = json_decode($request->get('cities'), TRUE, 512, JSON_THROW_ON_ERROR);
+			foreach ($cities as $cityId => $count) {
+				$store = Store::where('city_id', '=', $cityId)->first();
+				$store->furnitures()->attach($furniture->getId(), ['count' => $count]);
 			}
 			$furniture->save();
 			return response()->json([
