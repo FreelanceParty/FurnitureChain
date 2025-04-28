@@ -11,6 +11,10 @@
 			<div>{{ $furniture->getTitle() }}</div>
 			<div class="flex flex-wrap gap-1">
 				@include('_elements.badge', [
+					'color' => $isAvailableInCity ? 'green' : 'red',
+					'text'  => $isAvailableInCity ? 'Є у Вашому місті' : 'Немає у Вашому місті',
+				])
+				@include('_elements.badge', [
 					'color' => $furniture->isReadyToShipping() ? 'green' : 'red',
 					'text'  => $furniture->isReadyToShipping() ? trans('general.ready_to_shipping') : trans('general.not_ready_to_shipping'),
 				])

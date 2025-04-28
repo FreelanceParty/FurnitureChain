@@ -67,12 +67,32 @@
 				{{ $furniture?->getDescription() }}
 			</textarea>
 		</label>
-		@include('_elements.checkbox', [
-			'id'        => 'ready-to-shipping',
-			'name'      => 'ready_to_shipping',
-			'text'      => trans('general.ready_to_shipping'),
-			'isChecked' => $furniture?->isReadyToShipping(),
-		])
+		<div class="flex flex-col gap-0.5 justify-between">
+			@include('_elements.checkbox', [
+				'id'        => 'ready-to-shipping',
+				'name'      => 'ready_to_shipping',
+				'text'      => trans('general.ready_to_shipping'),
+				'isChecked' => $furniture?->isReadyToShipping(),
+			])
+			<div>
+				<div class="font-semibold text-xl">Міста:</div>
+				<div id="cities" class="flex flex-col gap-0.5">
+					@foreach( $cities as $city )
+						<div class="flex gap-2">
+							@include('_elements.checkbox', [
+								'text'      => $city->getTitle(),
+								'value'     => $city->getId(),
+								'isChecked' => $furniture && $furniture->stores()->where('city_id', '=', $city->getId())->exists(),
+							])
+							@include('_elements.input_text', [
+								'class' => 'js-city-input w-8',
+								'value' => empty($furniture) ? NULL : $furniture->stores()->where('city_id', '=', $city->getId())->first()?->pivot?->count,
+							])
+						</div>
+					@endforeach
+				</div>
+			</div>
+		</div>
 		<label class="flex flex-col">
 			{{ trans('general.image') }}
 			<div class="m-auto w-40 h-40">
@@ -115,6 +135,8 @@
 		      $readyToShipping = $editContent.find('#ready-to-shipping'),
 		      $imageSelector   = $editContent.find(".js-image-selector"),
 		      $imagePreview    = $editContent.find(".js-image-preview"),
+		      $citiesSection   = $editContent.find("#cities"),
+		      $cities          = $citiesSection.find('input[type="checkbox"]'),
 		      $deleteButton    = $editContent.find(".js-delete-photo"),
 		      $cancel          = $editContent.find('#cancel');
 
@@ -136,6 +158,14 @@
 			if ($imageSelector[0].files[0] !== undefined) {
 				formData.append("image", $imageSelector[0].files[0]);
 			}
+
+			const cities = {};
+			$cities.each(function () {
+				if ($(this).is(':checked')) {
+					cities[$(this).val()] = $(this).closest('div').find('.js-city-input').val();
+				}
+			});
+			formData.append("cities", JSON.stringify(cities));
 
 			$.ajax({
 				type:        "POST",

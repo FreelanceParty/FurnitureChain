@@ -8,6 +8,7 @@ use App\Traits\WithTitle;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @class   Furniture
@@ -36,6 +37,12 @@ class Furniture extends AModel
 		'created_at'       => 'datetime',
 		'updated_at'       => 'datetime',
 	];
+
+	/** @return BelongsToMany */
+	public function stores(): BelongsToMany
+	{
+		return $this->belongsToMany(Store::class, 'furniture_stores')->withPivot('count');
+	}
 
 	/*** @return BelongsTo */
 	public function furniture_type(): BelongsTo
@@ -100,6 +107,15 @@ class Furniture extends AModel
 	public function setFurnitureTypeId(int $furnitureTypeId): void
 	{
 		$this->furniture_type_id = $furnitureTypeId;
+	}
+
+	/**
+	 * @param Store $store
+	 * @return bool
+	 */
+	public function isAvailableIn(Store $store): bool
+	{
+		return $store->furnitures()->where('furniture_id', $this->getId())->exists();
 	}
 
 	/** @return bool */

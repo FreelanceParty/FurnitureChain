@@ -1,4 +1,4 @@
-<label class="flex h-[34px] mt-auto gap-1 w-fit cursor-pointer items-center">
+<label class="flex h-[34px] gap-1 w-fit cursor-pointer items-center">
 	<input
 			@if( ! empty( $id) )
 				id="{{ $id }}"
@@ -19,6 +19,9 @@
 			@endif
 			@if( $isChecked ?? FALSE )
 				checked
+			@endif
+			@if( ! empty($value) )
+				value="{{ $value }}"
 			@endif
 	>
 	{{ $text }}

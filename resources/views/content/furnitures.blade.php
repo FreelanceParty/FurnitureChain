@@ -40,6 +40,7 @@
 					'{{ route('content.details') }}',
 					{
 						furniture_id: $(this).data('id'),
+						city_id:      $('#js-city-filter').find(':selected').val(),
 					},
 					(response) => {
 						$content.html(response.html);

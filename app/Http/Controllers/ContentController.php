@@ -150,13 +150,19 @@ class ContentController extends Controller
 	 */
 	public function getFurnitureDetailsContent(Request $request): JsonResponse
 	{
-		$furniture = furnitureController()->findById($request->get('furniture_id'));
+		$furniture         = furnitureController()->findById($request->get('furniture_id'));
+		$isAvailableInCity = FALSE;
+		$cityId            = $request->get('city_id');
+		if ($cityId !== NULL) {
+			$isAvailableInCity = $furniture->stores()->where('city_id', '=', $cityId)->exists();
+		}
 		return response()->json([
 			'html' => view('content.details', [
-				'authUser'  => Auth::user(),
-				'type'      => $furniture->furniture_type,
-				'category'  => $furniture->furniture_type->furniture_category,
-				'furniture' => $furniture,
+				'authUser'          => Auth::user(),
+				'type'              => $furniture->furniture_type,
+				'category'          => $furniture->furniture_type->furniture_category,
+				'furniture'         => $furniture,
+				'isAvailableInCity' => $isAvailableInCity,
 			])->render(),
 		]);
 	}
@@ -331,6 +337,7 @@ class ContentController extends Controller
 				'authUser'  => Auth::user(),
 				'furniture' => $furniture ?? NULL,
 				'typeId'    => $request->get('type_id'),
+				'cities'    => City::all(),
 			])->render(),
 		]);
 	}
